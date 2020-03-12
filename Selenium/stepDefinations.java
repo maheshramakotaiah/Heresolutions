@@ -54,9 +54,10 @@ public class stepDefinations {
 		int outsideurl=0;
 		String url = "";
 		WebElement childdriver= driver.findElement(By.xpath("//div[@id='maps_section']//div[contains(@class,'cards__container cards__carousel-off cards__full-image-background-off container')]"));
-		List<WebElement> links = childdriver.findElements(By.tagName("a"));
 		
-		System.out.println(childdriver.findElements(By.tagName("a")).size());
+		List<WebElement> links = childdriver.findElements(By.xpath("xpath=//a[contains(@href,'/documentation')]"));
+	
+		System.out.println(childdriver.findElements(By.xpath("xpath=//a[contains(@href,'/documentation')]")).size());
 		
 		Iterator<WebElement> it = links.iterator();
         
