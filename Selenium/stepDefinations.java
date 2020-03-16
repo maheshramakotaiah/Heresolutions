@@ -53,11 +53,15 @@ public class stepDefinations {
 		int emptyurl=0;
 		int outsideurl=0;
 		String url = "";
-		WebElement childdriver= driver.findElement(By.xpath("//div[@id='maps_section']//div[contains(@class,'cards__container cards__carousel-off cards__full-image-background-off container')]"));
+		List<WebElement> tags= driver.findElements(By.xpath("//div[@id='maps_section']//div[contains(@class,'cards__container cards__carousel-off cards__full-image-background-off container')]"));
 		
-		List<WebElement> links = childdriver.findElements(By.xpath("xpath=//a[contains(@href,'/documentation')]"));
+		Iterator<WebElement> ib = tags.iterator();
+		
+		while(ib.hasNext()) {
+		
+		List<WebElement> links = ((WebElement) tags).findElements(By.xpath("xpath=//a[contains(@href,'/documentation')]"));
 	
-		System.out.println(childdriver.findElements(By.xpath("xpath=//a[contains(@href,'/documentation')]")).size());
+		System.out.println(((WebElement) tags).findElements(By.xpath("xpath=//a[contains(@href,'/documentation')]")).size());
 		
 		Iterator<WebElement> it = links.iterator();
         
@@ -102,8 +106,11 @@ public class stepDefinations {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+            
+            ib.next();
         }
         
+		}
         driver.quit();
         System.out.println(validcount+" urls is having a valid link");
         System.out.println(emptyurl+" urls is having no link");
